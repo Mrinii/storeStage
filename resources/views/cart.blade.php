@@ -56,7 +56,7 @@
             <td>
                 <form action="/session" method="POST">
                     @csrf
-                    <a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                    <a href="{{ url('/home') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type='hidden' name="total" value="{{ $total }}">
                     <input type='hidden' name="nom" value="{{ $details['nom'] }}">

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [prodController::class, 'home']);
+Route::get('/home', [prodController::class, 'home']);
 
 
 
@@ -51,7 +51,7 @@ Route::middleware(['adminuser'])->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/espaceadmin', [prodController::class, 'espaceadmin']);
 // Route::get('/espaceclient', [prodController::class, 'espaceclient']);
@@ -81,12 +81,12 @@ Route::get('/espaceclient', [prodController::class, 'espaceclient'])->middleware
 //route d'etails
 Route::get('/details/{id}', [prodController::class, 'details']);
 //route back
-Route::get('/back/{cat}', [prodController::class, 'getProdByCat']);
+Route::get('/back/{cat}', [prodController::class, 'getProdByCat'])->middleware('useruser');
 
 
 // les routes du cart
 Route::get('cart', [prodController::class, 'cart'])->middleware('useruser')->name('cart');
-Route::get('cart/addc/{id}', [prodController::class, 'addToCart']);
+Route::get('cart/addc/{id}', [prodController::class, 'addToCart'])->middleware('useruser');
 
 Route::patch('update-cart', [prodController::class, 'updatec']);
 

@@ -1,6 +1,9 @@
 @extends('master_page')
 @section('title','Acceuil')
 @section('content')
+<div class="container justify-content-center mt-3">
+    @include('incs.flash')
+</div>
 <h1 class="text-center">Bienvenue sur notre site e-commerce</h1>
 <p class="text-center">Découvrez nos produits de qualité à des prix compétitifs</p>
     @foreach ($produits as $item)
