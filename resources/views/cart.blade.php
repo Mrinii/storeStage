@@ -36,7 +36,7 @@
                     </td>
                     <td data-th="prix">{{ $details['prix'] }} DH</td>
                     <td data-th="quantite">
-                        <input type="number" value="{{ $details['quantite'] }}" class="form-control quantite" />
+                        <input type="number" value="{{ $details['quantite'] }}" class="form-control quantite" min="1" />
                     </td>
                     <td data-th="Subtotal" class="text-center">{{ $details['prix'] * $details['quantite'] }} DH</td>
                     <td class="actions" data-th="">
@@ -53,9 +53,22 @@
         <tfoot>
 
         <tr>
-            <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-            <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total {{ $total }} DH</strong></td>
+            <td>
+                <form action="/session" method="POST">
+                    @csrf
+                    <a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type='hidden' name="total" value="{{ $total }}">
+                    <input type='hidden' name="nom" value="{{ $details['nom'] }}">
+                    <input type='hidden' name="quantite" value="{{ $details['quantite'] }}">
+                    <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i> Checkout</button>
+                </form>
+
+            </td>
+            <td>
+                {{$total}}
+            </td>
+
         </tr>
         </tfoot>
     </table>

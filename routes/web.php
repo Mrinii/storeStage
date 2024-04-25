@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\prodController;
 use App\Http\Controllers\ResController;
+use App\Http\Controllers\StripController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -84,9 +85,13 @@ Route::get('/back/{cat}', [prodController::class, 'getProdByCat']);
 
 
 // les routes du cart
-Route::get('cart', [prodController::class, 'cart'])->middleware('useruser');
+Route::get('cart', [prodController::class, 'cart'])->middleware('useruser')->name('cart');
 Route::get('cart/addc/{id}', [prodController::class, 'addToCart']);
 
 Route::patch('update-cart', [prodController::class, 'updatec']);
 
 Route::delete('remove-from-cart', [prodController::class, 'removec']);
+//payment route
+Route::post('/session', [StripController::class, 'session'])->middleware('useruser')->name('session');
+// Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success', [StripController::class, 'success'])->name('success');

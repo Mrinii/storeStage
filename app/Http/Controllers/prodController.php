@@ -10,18 +10,18 @@ class prodController extends Controller
 {
     public  function home()
     {
-        $produits = Produits::paginate(3);
+        $produits = Produits::all();
         return view('home', ['produits' => $produits]);
     }
     public function espaceadmin()
     {
-        $produits = Produits::paginate(3);
+        $produits = Produits::all();
         return view('espaceadmin', ['produits' => $produits]);
         // return view('espaceadmin');
     }
     public function espaceclient()
     {
-        $produits = Produits::paginate(3);
+        $produits = Produits::all();
         return view('espaceclient', ['produits' => $produits]);
     }
 
