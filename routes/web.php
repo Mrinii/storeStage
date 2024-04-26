@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [prodController::class, 'home']);
+Route::get('/', [prodController::class, 'home']);
 
 
 
@@ -51,7 +51,7 @@ Route::middleware(['adminuser'])->group(function () {
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/espaceadmin', [prodController::class, 'espaceadmin']);
 // Route::get('/espaceclient', [prodController::class, 'espaceclient']);
